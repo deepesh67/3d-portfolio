@@ -1,4 +1,4 @@
-import { PropsWithChildren, useEffect, useState } from "react";
+import { PropsWithChildren, useEffect } from "react";
 import Landing from "./Landing";
 import Navbar from "./Navbar";
 import About from "./About";
@@ -11,17 +11,12 @@ import Footer from "./Footer";
 import setSplitText from "./utils/splitText";
 
 const MainContainer = ({ children }: PropsWithChildren) => {
-  const [isDesktopView, setIsDesktopView] = useState<boolean>(
-    window.innerWidth > 1024
-  );
-
   useEffect(() => {
     let timeoutId: number;
     const resizeHandler = () => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         setSplitText();
-        setIsDesktopView(window.innerWidth > 1024);
       }, 200);
     };
     

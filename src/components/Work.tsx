@@ -133,7 +133,7 @@ const Work = () => {
         setActiveIndex((prev) => (prev + 1) % projects.length);
         // Fade new layout in
         gsap.to(deckRef.current!.querySelectorAll(".stack-card"), {
-          opacity: (i, el) => {
+          opacity: (_, el) => {
             const slot = parseInt((el as HTMLElement).dataset.slot ?? "0");
             return STACK_OFFSETS[slot]?.opacity ?? 1;
           },
