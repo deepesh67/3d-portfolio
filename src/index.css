@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&display=swap");
+
+:root {
+  font-family: "Geist", sans-serif;
+
+  font-optical-sizing: auto;
+  font-style: normal;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+  color-scheme: light dark;
+  color: #ffffff;
+  background-color: var(--backgroundColor);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+
+  /* ── Mustard Color Scale ── */
+  --accent-primary:  #d9a016;          /* Main CTAs, headings, active nav */
+  --accent-bright:   #f5c842;          /* Hover states, glow highlights */
+  --accent-muted:    #a37510;          /* Labels, secondary borders */
+  --accent-dim:      rgba(217,160,22,0.12); /* Card tints, badge fills */
+  --accent-glow:     rgba(217,160,22,0.25); /* Box-shadow glow on hover */
+
+  /* Legacy alias — keeps all existing var(--accentColor) working */
+  --accentColor: var(--accent-primary);
+
+  /* ── Background ── */
+  --backgroundColor: #0a0a0a;
+
+  /* ── Text Scale ── */
+  --text-primary:    #ffffff;
+  --text-secondary:  rgba(255,255,255,0.65);
+  --text-muted:      rgba(255,255,255,0.35);
+
+  /* ── Surfaces & Borders ── */
+  --surface-card:    rgba(255,255,255,0.03);
+  --border-subtle:   rgba(255,255,255,0.06);
+  --border-accent:   rgba(217,160,22,0.30);
+
+  /* ── Radius Tokens ── */
+  --radius-card: 20px;
+  --radius-pill: 999px;
+  --radius-sm:   10px;
+
+  /* ── Global Transition ── */
+  --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  --vh: 100vh;
+  --vh: 100svh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Outfit", sans-serif;
+}
+
+/* ── Global Section Heading ── */
+.section-title {
+  font-family: "Outfit", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 3rem 0;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+body {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: var(--accentColor);
+}
+
+main {
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.main-active {
+  opacity: 0;
+  animation: fadeIn 1s 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+body {
+  margin: 0;
+  height: auto;
+  background-color: #050810;
+  flex-grow: 1;
+  --cWidth: calc(100% - 30px);
+  --cMaxWidth: 1920px;
+  max-width: 100vw;
+}
+
+.section-container {
+  width: var(--cWidth);
+  max-width: var(--cMaxWidth);
+  margin: 0 auto;
+}
+
+#root {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.main-body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.container-main {
+  width: 100%;
+  margin: auto;
+  position: relative;
+}
+
+.container1 {
+  width: var(--cWidth);
+  height: var(--vh);
+  margin: auto;
+  position: relative;
+}
+
+.split-line {
+  overflow: hidden;
+}
+
+.split-h2 {
+  overflow: hidden;
+  display: flex;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+
+.techstack {
+  width: 100%;
+  position: relative;
+  overflow: clip;
+  height: var(--vh);
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: -100px;
+}
+
+.techstack h2 {
+  font-size: 80px;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  top: 120px;
+  left: 0;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    --cWidth: 94%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .techstack h2 {
+    font-size: 40px;
+  }
+}

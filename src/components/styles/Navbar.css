@@ -1,0 +1,210 @@
+/* ── Navbar ── */
+.header {
+  display: flex;
+  align-items: center;
+  max-width: var(--cMaxWidth);
+  width: var(--cWidth);
+  justify-content: space-between;
+  padding: 22px 0;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  z-index: 9999;
+  gap: 2rem;
+}
+
+/* KJ Logo */
+.nav-logo {
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+}
+.nav-logo img {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+}
+.nav-logo:hover { opacity: 0.75; }
+
+/* Desktop nav links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-link {
+  font-family: "Geist", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.25s ease;
+}
+
+/* Animated underline */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: var(--accentColor);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #fff;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Right side */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+
+.nav-icon-link {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+.nav-icon-link:hover { color: #fff; }
+
+/* Hire Me button */
+.nav-cta {
+  font-family: "Geist", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.45rem 1.1rem;
+  border: 1.5px solid var(--accentColor);
+  border-radius: 50px;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.nav-cta:hover {
+  background-color: var(--accentColor);
+  color: #fff;
+}
+
+/* ── Hamburger ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile menu ── */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 10, 0.97);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.5rem var(--cWidth, 5%);
+  gap: 1.25rem;
+  z-index: 9998;
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+.mobile-menu.visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+.mobile-nav-link {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.mobile-nav-link:hover { color: var(--accentColor); }
+
+.mobile-social {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+.mobile-social a {
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.55);
+  transition: color 0.25s;
+}
+.mobile-social a:hover { color: #fff; }
+
+/* Gradient fade below navbar */
+.nav-fade {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 130px;
+  background-image: linear-gradient(0deg, transparent, var(--backgroundColor) 70%);
+  pointer-events: none;
+  z-index: 12;
+  left: 0;
+}
+
+/* ── Focus visible ── */
+.nav-link:focus-visible,
+.nav-icon-link:focus-visible,
+.nav-cta:focus-visible,
+.nav-logo:focus-visible {
+  outline: 2px solid var(--accentColor);
+  outline-offset: 3px;
+  border-radius: 50px;
+}
+
+/* ── Responsive ── */
+@media only screen and (max-width: 768px) {
+  .header { padding: 18px 0; }
+  .nav-links { display: none; }
+  .nav-icon-link { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .mobile-menu { display: flex; }
+}

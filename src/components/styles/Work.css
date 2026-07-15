@@ -1,0 +1,420 @@
+/* ═══════════════════════════════════════════
+   Work / Projects — Stacked Card Deck Layout
+   ═══════════════════════════════════════════ */
+
+.work-section {
+  width: 100%;
+  padding: 6rem 0 5rem 0;
+  background-color: var(--backgroundColor);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient top divider */
+.work-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-accent), transparent);
+}
+
+/* Ambient mustard glow — top right */
+.work-section::after {
+  content: "";
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--accent-dim) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Vertical layout: header on top, deck full-width below ── */
+.work-inner {
+  width: var(--cWidth);
+  max-width: var(--cMaxWidth);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Header: single centered row — text center, nav right ── */
+.work-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  text-align: center;
+  position: relative;
+}
+
+.work-left-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Nav pinned to the right end */
+.work-nav {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.work-label {
+  display: inline-block;
+  font-family: "Geist", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent-bright);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  background: var(--accent-dim);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-pill);
+}
+
+.work-heading {
+  font-family: "Outfit", sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+
+.work-heading-accent {
+  color: var(--accent-primary);
+}
+
+.work-sub {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 460px;
+  text-align: center;
+}
+
+/* ── Navigation (positioned absolute at right in header) ── */
+
+.work-nav-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-accent);
+  background: var(--accent-dim);
+  color: var(--accent-bright);
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.work-nav-btn:hover {
+  background: var(--accent-primary);
+  color: #0a0a0a;
+  box-shadow: 0 0 24px var(--accent-glow);
+  transform: scale(1.08);
+}
+
+.work-nav-count {
+  font-family: "Geist", sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+}
+
+/* ── Card deck — centered ── */
+.work-deck-wrapper {
+  position: relative;
+  height: 340px;
+  padding-top: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Each card positioned absolutely so they layer */
+.stack-card {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-subtle);
+  background: #111214;
+  overflow: hidden;
+  transition:
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity   0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.45s ease;
+  cursor: default;
+  transform-origin: center bottom;
+  will-change: transform, opacity;
+}
+
+/* Non-front cards are clickable to advance the deck */
+.stack-card:not(.stack-card--front) {
+  cursor: pointer;
+}
+
+.stack-card--front {
+  border-color: var(--border-accent);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--border-accent);
+}
+
+/* Card inner: two columns */
+.stack-card-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+
+/* ── Info column ── */
+.stack-info {
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow: hidden;
+}
+
+.stack-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.stack-number {
+  font-family: "Outfit", sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--accent-primary);
+  line-height: 1;
+  opacity: 0.5;
+}
+
+.stack-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.stack-tag {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-muted);
+  background: var(--accent-dim);
+  border: 1px solid rgba(217,160,22,0.25);
+  border-radius: var(--radius-pill);
+  padding: 0.28rem 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stack-title {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.stack-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+
+/* Tech pills */
+.stack-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.tech-pill {
+  font-size: 0.68rem;
+  padding: 0.22rem 0.65rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-pill);
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+/* Links */
+.stack-links {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.stack-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: "Geist", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  transition: var(--transition);
+}
+
+.stack-btn:hover:not(.btn-disabled) {
+  border-color: var(--accent-primary);
+  color: var(--accent-bright);
+  background: var(--accent-dim);
+}
+
+.btn-disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn-arrow {
+  transition: transform 0.3s ease;
+}
+
+.stack-btn:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+/* ── Image column ── */
+.stack-image {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.stack-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  transition: transform 0.7s ease;
+  display: block;
+}
+
+.stack-card--front .stack-image img:hover {
+  transform: scale(1.04);
+}
+
+/* Gradient overlay on the image — fades left into the info column */
+.stack-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    #111214 0%,
+    transparent 30%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* Fallback if no image — dark gradient placeholder */
+.stack-image:not(:has(img[src])) {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+
+/* ── Responsive ── */
+@media screen and (max-width: 900px) {
+  .work-left {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    text-align: center;
+  }
+
+  .work-nav {
+    position: static;
+  }
+
+  .work-heading {
+    font-size: 2rem;
+    white-space: normal;
+  }
+
+  .work-sub {
+    max-width: 100%;
+  }
+
+  .work-deck-wrapper {
+    height: 380px;
+    max-width: 100%;
+  }
+
+  .stack-card-body {
+    grid-template-columns: 1fr;
+  }
+
+  .stack-image {
+    display: none;
+  }
+
+  .stack-info {
+    padding: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .work-section {
+    padding: 4rem 0 3rem 0;
+  }
+
+  .work-heading {
+    font-size: 1.7rem;
+  }
+
+  .work-deck-wrapper {
+    height: 340px;
+    padding-top: 32px;
+  }
+
+  .stack-number {
+    font-size: 1.6rem;
+  }
+
+  .stack-title {
+    font-size: 1.2rem;
+  }
+
+  .stack-desc {
+    font-size: 0.82rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .work-nav-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,195 @@
+.skills-section {
+  width: 100%;
+  padding: 5rem 0 2rem 0;
+  background-color: var(--backgroundColor);
+  position: relative;
+}
+
+/* Gradient top divider */
+.skills-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-accent), transparent);
+}
+
+.skills-container {
+  width: var(--cWidth);
+  max-width: var(--cMaxWidth);
+  margin: 0 auto;
+}
+
+/* Section title — centered */
+.skills-container .section-title {
+  text-align: center;
+}
+
+/* Staggered Vertical Masonry Columns */
+.skills-masonry {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+.skills-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Offsets to create the staggered masonry layout */
+.skills-column.col-1 {
+  margin-top: 0;
+}
+
+.skills-column.col-2 {
+  margin-top: 3.5rem;
+}
+
+.skills-column.col-3 {
+  margin-top: -1.5rem;
+}
+
+/* Float Animations for staggered movement */
+.skills-card-wrapper {
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.floating-card {
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* 3D Glassmorphic Cards */
+.skill-category {
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.5) 0%, rgba(5, 5, 5, 0.7) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 2.5rem 2rem;
+  border-radius: 24px;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.skill-category:hover {
+  border-color: rgba(217, 160, 22, 0.3); /* Premium mustard accent glow border */
+  box-shadow: 0 25px 50px rgba(217, 160, 22, 0.08); /* Soft glowing mustard shadow */
+}
+
+/* 3D Vector Icon Wrapper */
+.skills-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.skill-3d-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+  margin-bottom: 1.5rem;
+  transform: translateZ(30px); /* Pushes the icon forward in 3D space */
+}
+
+.skill-3d-svg {
+  width: 90px;
+  height: 90px;
+  filter: drop-shadow(0 8px 16px rgba(217, 160, 22, 0.35));
+}
+
+.skill-category-title {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 1.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  transform: translateZ(20px); /* Mid-level 3D projection */
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  transform: translateZ(15px); /* Tag level 3D projection */
+}
+
+.skill-tag {
+  font-family: "Geist", sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.25s ease;
+}
+
+.skill-tag:hover {
+  background: var(--accentColor);
+  color: #fff;
+  border-color: var(--accentColor);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 900px) {
+  .skills-masonry {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .skills-column.col-1,
+  .skills-column.col-2,
+  .skills-column.col-3 {
+    margin-top: 0;
+  }
+
+  .skill-category {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .floating-card {
+    animation: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .skills-masonry {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .skills-section {
+    padding: 4rem 0 2rem 0;
+  }
+
+  .skill-category-title {
+    font-size: 1.1rem;
+  }
+
+  .skill-tag {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.75rem;
+  }
+}

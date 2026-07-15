@@ -1,0 +1,196 @@
+/* ── Experience Section ── */
+.experience-section {
+  width: 100%;
+  padding: 5rem 0 3rem 0;
+  background-color: var(--backgroundColor);
+  position: relative;
+}
+
+/* Gradient top divider */
+.experience-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-accent), transparent);
+}
+
+.experience-container {
+  width: var(--cWidth);
+  max-width: var(--cMaxWidth);
+  margin: 0 auto;
+}
+
+/* Section heading */
+.section-title {
+  font-family: "Outfit", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 3rem 0;
+  letter-spacing: -0.5px;
+}
+
+/* Timeline line */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--border-accent), var(--border-subtle));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Glowing mustard dot */
+.timeline-dot {
+  position: absolute;
+  top: 0.4rem;
+  left: -2.35rem;
+  width: 12px;
+  height: 12px;
+  background-color: var(--accent-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+/* Glassmorphic card */
+.timeline-content {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  padding: 2rem;
+  border-radius: var(--radius-card);
+  transition: var(--transition);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+.timeline-content:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-accent);
+  box-shadow: 0 20px 50px var(--accent-glow);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.role-title {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Mustard pill date badge */
+.timeline-date {
+  font-family: "Geist", sans-serif;
+  font-size: 0.8rem;
+  color: var(--accent-bright);
+  background: var(--accent-dim);
+  border: 1px solid var(--border-accent);
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+}
+
+.company-name {
+  font-size: 0.95rem;
+  color: var(--accent-muted);
+  margin: 0 0 1.5rem 0;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.responsibilities {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.responsibilities li {
+  position: relative;
+  padding-left: 1.2rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.responsibilities li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--accent-primary);
+}
+
+
+@media screen and (max-width: 768px) {
+  .experience-section {
+    padding: 4rem 0 2.5rem 0;
+  }
+
+  .timeline {
+    padding-left: 1.5rem;
+    max-width: 100%;
+  }
+
+  .timeline-dot {
+    left: -1.8rem;
+  }
+
+  .timeline-content {
+    padding: 1.5rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .role-title {
+    font-size: 1.1rem;
+  }
+
+  .responsibilities li {
+    font-size: 0.88rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  .timeline-content {
+    padding: 1.2rem;
+  }
+  .role-title {
+    font-size: 1rem;
+  }
+}
