@@ -108,7 +108,7 @@ const Navbar = () => {
         {/* Social + CTA */}
         <div className="nav-right">
           <a
-            href="https://github.com/khushijangid1902"
+            href="https://github.com/khushijangid2004"
             target="_blank"
             rel="noreferrer"
             className="nav-icon-link"
@@ -162,7 +162,7 @@ const Navbar = () => {
           </a>
         ))}
         <div className="mobile-social">
-          <a href="https://github.com/khushijangid1902" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <a href="https://github.com/khushijangid2004" target="_blank" rel="noreferrer" aria-label="GitHub">
             <FiGithub />
           </a>
           <a href="https://www.linkedin.com/in/khushi-jangid-6682b6307/" target="_blank" rel="noreferrer" aria-label="LinkedIn">

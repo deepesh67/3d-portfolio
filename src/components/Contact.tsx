@@ -73,7 +73,7 @@ const Contact = () => {
             <div className="contact-icon">
               <FiGithub />
             </div>
-            <a href="https://github.com/khushijangid1902" target="_blank" rel="noreferrer">github.com/khushijangid1902</a>
+            <a href="https://github.com/khushijangid2004" target="_blank" rel="noreferrer">github.com/khushijangid2004</a>
           </div>
 
           <div className="contact-item">

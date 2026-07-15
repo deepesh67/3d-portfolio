@@ -110,7 +110,7 @@ const Landing = ({ children }: PropsWithChildren) => {
                 </a>
 
                 <a
-                  href="https://github.com/khushijangid1902"
+                  href="https://github.com/khushijangid2004"
                   target="_blank"
                   rel="noreferrer"
                   className="cta-icon"

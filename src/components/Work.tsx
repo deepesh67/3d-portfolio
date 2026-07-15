@@ -34,7 +34,7 @@ const projects = [
     image: "/images/portfolio.png",
     links: [
       { type: "Live Demo", url: "https://khushijangid.dev", icon: <FiExternalLink />, disabled: false },
-      { type: "GitHub", url: "https://github.com/khushijangid1902", icon: <FiGithub />, disabled: false },
+      { type: "GitHub", url: "https://github.com/khushijangid2004", icon: <FiGithub />, disabled: false },
     ],
   },
 ];
