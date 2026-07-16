@@ -72,12 +72,13 @@
 }
 
 .role {
+  font-family: "Caveat", cursive;
   font-size: 1.1rem;
   color: var(--accentColor);
   font-weight: 500;
   margin-bottom: 1.25rem;
   letter-spacing: 2px;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .bio {
@@ -125,6 +126,19 @@
   0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
   70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
   100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* ── Typewriter Cursor ── */
+.blinking-cursor {
+  font-weight: 400;
+  color: var(--accentColor);
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 /* ── Hero CTA Buttons ── */
@@ -279,13 +293,29 @@
 }
 
 @media screen and (max-width: 1024px) {
+  .landing-section {
+    height: auto;
+    min-height: var(--vh);
+  }
   .landing-bg-text {
     font-size: 40vw;
   }
   .landing-content {
     flex-direction: column;
-    justify-content: flex-end;
-    padding-bottom: 2rem;
+    justify-content: flex-start;
+    padding-top: 120px;
+    padding-bottom: 0;
+  }
+  .character-container {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: 65vh !important;
+    margin-top: 3rem;
+    margin-bottom: -15vh;
   }
   .landing-left, .landing-right {
     flex: none;
@@ -307,13 +337,28 @@
 @media screen and (max-width: 768px) {
   .landing-section {
     overflow: hidden;
+    height: auto;
+    min-height: var(--vh);
   }
 
   .landing-content {
     flex-direction: column;
-    justify-content: flex-end;
-    padding-bottom: 1.5rem;
+    justify-content: flex-start;
+    padding-top: 100px;
+    padding-bottom: 0;
     gap: 0;
+  }
+
+  .character-container {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: 55vh !important;
+    margin-top: 2.5rem;
+    margin-bottom: -10vh;
   }
 
   .landing-left {

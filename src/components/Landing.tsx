@@ -1,10 +1,56 @@
-import { PropsWithChildren, useEffect } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 import { FiGithub, FiLinkedin, FiFileText, FiArrowDown } from "react-icons/fi";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./styles/Landing.css";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const TITLES = [
+  "Software Engineer",
+  "Full Stack Developer",
+  "MERN Stack Developer",
+  "React.js Developer",
+  "Frontend Developer",
+];
+
+const Typewriter = () => {
+  const [text, setText] = useState("");
+  const [titleIndex, setTitleIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentTitle = TITLES[titleIndex];
+    const typingSpeed = isDeleting ? 40 : 100;
+    const pauseTime = 2000;
+
+    let timer: ReturnType<typeof setTimeout>;
+
+    if (!isDeleting && text === currentTitle) {
+      timer = setTimeout(() => setIsDeleting(true), pauseTime);
+    } else if (isDeleting && text === "") {
+      setIsDeleting(false);
+      setTitleIndex((prev) => (prev + 1) % TITLES.length);
+    } else {
+      timer = setTimeout(() => {
+        setText((prev) =>
+          isDeleting
+            ? currentTitle.substring(0, prev.length - 1)
+            : currentTitle.substring(0, prev.length + 1)
+        );
+      }, typingSpeed);
+    }
+
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, titleIndex]);
+
+  return (
+    <>
+      {text}
+      <span className="blinking-cursor">|</span>
+    </>
+  );
+};
 
 const Landing = ({ children }: PropsWithChildren) => {
   useEffect(() => {
@@ -77,7 +123,9 @@ const Landing = ({ children }: PropsWithChildren) => {
               </div>
 
               {/* Role */}
-              <h2 className="role landing-info-h2">Full Stack Developer</h2>
+              <h2 className="role landing-info-h2">
+                <Typewriter />
+              </h2>
 
               {/* Bio — resume-sourced, no invented content */}
               <p className="bio landing-h2-info">
