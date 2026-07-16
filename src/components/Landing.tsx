@@ -67,7 +67,13 @@ const Landing = ({ children }: PropsWithChildren) => {
           }
         });
 
-        tl.to(".landing-content", {
+        tl.to(".landing-left", {
+          opacity: 0,
+          y: -120,
+          ease: "none"
+        }, 0);
+        
+        tl.to(".landing-right", {
           opacity: 0,
           y: -120,
           ease: "none"

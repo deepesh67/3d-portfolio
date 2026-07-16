@@ -147,8 +147,6 @@ export function setAllTimeline() {
   landingFadeTimeline
     // Fade out and slide up the left text content
     .to(".landing-left", { opacity: 0, y: -60, duration: 0.5 }, 0)
-    // Fade out and slide up the character image
-    .to(".character-container", { opacity: 0, y: -60, duration: 0.5 }, 0)
     // Fade out the right stats
     .to(".landing-right", { opacity: 0, y: -60, duration: 0.5 }, 0)
     // Fade out the background PORTFOLIO text faster
