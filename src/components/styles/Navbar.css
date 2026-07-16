@@ -27,7 +27,7 @@
   height: 50px;
   width: auto;
   object-fit: contain;
-  transform: scale(3.5);
+  transform: scale(2.8);
   transform-origin: center;
 }
 
@@ -170,6 +170,8 @@
   opacity: 0;
   transition: opacity 0.25s ease, transform 0.25s ease;
   pointer-events: none;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .mobile-menu.visible {
@@ -254,5 +256,9 @@
 
   .mobile-menu {
     display: flex;
+  }
+  
+  .nav-logo img {
+    transform: scale(2.2);
   }
 }

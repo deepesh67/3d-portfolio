@@ -32,6 +32,7 @@
   gap: 2.5rem;
   align-items: start;
   margin-top: 1rem;
+  width: 100%;
 }
 
 .skills-column {
@@ -191,5 +192,11 @@
   .skill-tag {
     font-size: 0.78rem;
     padding: 0.35rem 0.75rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .skill-category {
+    padding: 1.25rem 1rem;
   }
 }

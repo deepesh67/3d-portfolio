@@ -194,3 +194,21 @@
     font-size: 1rem;
   }
 }
+
+@media screen and (max-width: 375px) {
+  .timeline {
+    padding-left: 1rem;
+  }
+  .timeline-dot {
+    left: -1.35rem;
+    width: 10px;
+    height: 10px;
+  }
+  .timeline-content {
+    padding: 1rem;
+  }
+  .timeline-date {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+  }
+}

@@ -419,3 +419,36 @@
     font-size: 1.1rem;
   }
 }
+
+/* Hide extra cards on tablet (max 1024px -> 2 cards) */
+@media screen and (max-width: 1024px) {
+  .stack-card[data-slot="1"], 
+  .stack-card[data-slot="0"] {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
+
+/* Hide extra cards on mobile (max 768px -> 1 card) */
+@media screen and (max-width: 768px) {
+  .stack-card[data-slot="2"] {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
+
+/* Mobile Small adjustments */
+@media screen and (max-width: 375px) {
+  .work-heading {
+    font-size: 1.5rem;
+  }
+  .stack-number {
+    font-size: 1.4rem;
+  }
+  .stack-title {
+    font-size: 1.1rem;
+  }
+  .stack-info {
+    padding: 1.2rem;
+  }
+}

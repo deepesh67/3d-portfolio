@@ -361,3 +361,28 @@
     text-align: center;
   }
 }
+
+/* ── Mobile Small ── */
+@media screen and (max-width: 480px) {
+  .name {
+    font-size: 2rem;
+  }
+  
+  .bio {
+    font-size: 0.85rem;
+  }
+  
+  .landing-bg-text {
+    font-size: 50vw;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .name {
+    font-size: 1.8rem;
+  }
+  
+  .hero-ctas {
+    gap: 0.5rem;
+  }
+}

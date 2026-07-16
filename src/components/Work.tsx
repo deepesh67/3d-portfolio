@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FiGithub, FiArrowRight } from "react-icons/fi";
+import "./styles/Work.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
