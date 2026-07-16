@@ -81,10 +81,10 @@ const Navbar = () => {
         <a
           href="#landingDiv"
           className="nav-logo"
-          aria-label="Khushi Jangid — Home"
+          aria-label="Deepesh Sharma — Home"
           onClick={(e) => { e.preventDefault(); scrollTo("#landingDiv"); }}
         >
-          <img src="/images/logo.png" alt="Khushi Jangid Logo" />
+          <img src="/images/logo.png" alt="Deepesh Sharma Logo" />
         </a>
 
         {/* Desktop Nav Links */}
@@ -108,7 +108,7 @@ const Navbar = () => {
         {/* Social + CTA */}
         <div className="nav-right">
           <a
-            href="https://github.com/khushijangid2004"
+            href="https://github.com/deepesh67"
             target="_blank"
             rel="noreferrer"
             className="nav-icon-link"
@@ -117,7 +117,7 @@ const Navbar = () => {
             <FiGithub />
           </a>
           <a
-            href="https://www.linkedin.com/in/khushi-jangid-6682b6307/"
+            href="https://linkedin.com/in/deepesh-sharma-29b83426a"
             target="_blank"
             rel="noreferrer"
             className="nav-icon-link"
@@ -162,10 +162,10 @@ const Navbar = () => {
           </a>
         ))}
         <div className="mobile-social">
-          <a href="https://github.com/khushijangid2004" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <a href="https://github.com/deepesh67" target="_blank" rel="noreferrer" aria-label="GitHub">
             <FiGithub />
           </a>
-          <a href="https://www.linkedin.com/in/khushi-jangid-6682b6307/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <a href="https://linkedin.com/in/deepesh-sharma-29b83426a" target="_blank" rel="noreferrer" aria-label="LinkedIn">
             <FiLinkedin />
           </a>
         </div>

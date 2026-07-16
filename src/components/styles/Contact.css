@@ -188,6 +188,7 @@
   .contact-item a,
   .contact-item span {
     font-size: 0.88rem;
+    word-break: break-all;
   }
 
   .freelance-btn {

@@ -49,19 +49,12 @@ const Experience = () => {
             <div className="timeline-dot"></div>
             <div className="timeline-content">
               <div className="timeline-header">
-                <h3 className="role-title">Full Stack Developer Intern</h3>
-                <span className="timeline-date">Present</span>
+                <h3 className="role-title">MERN Stack Trainee</h3>
+                <span className="timeline-date">2025 - 2025</span>
               </div>
-              <h4 className="company-name">LawDocs</h4>
+              <h4 className="company-name">Regex Software</h4>
               <ul className="responsibilities">
-                <li>Developed responsive React.js applications and built reusable UI components.</li>
-                <li>Integrated REST APIs for seamless frontend-backend communication.</li>
-                <li>Worked on Node.js, Express.js and MongoDB to enhance backend features.</li>
-                <li>Built AI-assisted document review workflows to improve compliance analysis.</li>
-                <li>Worked on React Native mobile applications.</li>
-                <li>Implemented authentication, onboarding and KYC workflows.</li>
-                <li>Worked with TypeScript and Expo to enhance application performance.</li>
-                <li>Collaborated with cross-functional teams to understand business requirements.</li>
+                <li>Built full-stack apps during intensive training program.</li>
               </ul>
             </div>
           </div>
@@ -71,10 +64,10 @@ const Experience = () => {
             <div className="timeline-dot"></div>
             <div className="timeline-content">
               <div className="timeline-header">
-                <h3 className="role-title">B.Tech in Information Technology</h3>
-                <span className="timeline-date">2022 - 2026</span>
+                <h3 className="role-title">B.Tech in Electronics and Communication Engineering</h3>
+                <span className="timeline-date">11/2022 - 08/2026</span>
               </div>
-              <h4 className="company-name">SKIT College (Rajasthan Technical University), Jaipur</h4>
+              <h4 className="company-name">SKIT College (Rajasthan Technical University), Jaipur, India</h4>
             </div>
           </div>
         </div>

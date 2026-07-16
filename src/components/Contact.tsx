@@ -49,9 +49,9 @@ const Contact = () => {
             TOGETHER? <span className="red-star">✦</span>
           </h2>
           <p className="contact-desc">
-            I'm currently open to Full-Time Software Engineering opportunities.
+            I'm currently open to Entry-Level Software Developer opportunities.
           </p>
-          <a href="mailto:khushijangid1902@gmail.com" className="freelance-btn">SEND A MESSAGE &rarr;</a>
+          <a href="mailto:Deepesh4938@gmail.com" className="freelance-btn">SEND A MESSAGE &rarr;</a>
         </div>
         
         <div className="contact-right">
@@ -59,28 +59,28 @@ const Contact = () => {
             <div className="contact-icon">
               <MdEmail />
             </div>
-            <a href="mailto:khushijangid1902@gmail.com">khushijangid1902@gmail.com</a>
+            <a href="mailto:Deepesh4938@gmail.com">Deepesh4938@gmail.com</a>
           </div>
           
           <div className="contact-item">
             <div className="contact-icon">
               <MdPhone />
             </div>
-            <a href="tel:7737863869">+91 7737863869</a>
+            <a href="tel:9928695410">+91 99286 95410</a>
           </div>
 
           <div className="contact-item">
             <div className="contact-icon">
               <FiGithub />
             </div>
-            <a href="https://github.com/khushijangid2004" target="_blank" rel="noreferrer">github.com/khushijangid2004</a>
+            <a href="https://github.com/deepesh67" target="_blank" rel="noreferrer">github.com/deepesh67</a>
           </div>
 
           <div className="contact-item">
             <div className="contact-icon">
               <FiLinkedin />
             </div>
-            <a href="https://www.linkedin.com/in/khushi-jangid-6682b6307/" target="_blank" rel="noreferrer">linkedin.com/in/khushi-jangid-6682b6307</a>
+            <a href="https://linkedin.com/in/deepesh-sharma-29b83426a" target="_blank" rel="noreferrer">linkedin.com/in/deepesh-sharma-29b83426a</a>
           </div>
           
           <div className="contact-item">

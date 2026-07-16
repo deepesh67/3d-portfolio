@@ -10,36 +10,63 @@ const projects = [
   {
     number: "01",
     year: "2025",
-    badge: "Company Project",
-    category: "GRC Platform",
-    title: "LawDocs Comply",
+    badge: "Personal Project",
+    category: "HR System",
+    title: "HR Management System",
     description:
-      "A comprehensive Governance, Risk & Compliance platform for legal document management. Built AI-assisted document review workflows and role-based access modules.",
-    tech: ["React.js", "Node.js", "MongoDB", "Express.js"],
-    image: "/images/lawdocs.png",
+      "A full-stack HR management system to manage employee leave requests and attendance tracking. Implemented role-based access (Admin & Employee), daily marking, validation rules, and an admin dashboard.",
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
+    image: "/images/hr-system.png",
     links: [
-      { type: "Case Study", url: "#", icon: <FiExternalLink />, disabled: false },
-      { type: "Confidential", url: "#", icon: <FiLock />, disabled: true },
+      { type: "GitHub", url: "https://github.com/deepesh67", icon: <FiGithub />, disabled: false },
     ],
   },
   {
     number: "02",
     year: "2025",
     badge: "Personal Project",
-    category: "Portfolio Website",
-    title: "Personal Portfolio",
+    category: "Form Builder",
+    title: "No-Code Dynamic Form Builder",
     description:
-      "A 3D animated portfolio with GSAP scroll-triggered animations, a Three.js character, and a custom design system built from scratch using React and Vite.",
-    tech: ["React.js", "GSAP", "Three.js", "TypeScript"],
-    image: "/images/portfolio.png",
+      "A No-Code Dynamic Form Builder using the MERN Stack, enabling users to create and publish forms without coding. Features dynamic form rendering, real-time response collection, CSV export, analytics dashboard, and drag-and-drop functionality.",
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT"],
+    image: "/images/form-builder.png",
     links: [
-      { type: "Live Demo", url: "https://khushijangid.dev", icon: <FiExternalLink />, disabled: false },
-      { type: "GitHub", url: "https://github.com/khushijangid2004", icon: <FiGithub />, disabled: false },
+      { type: "GitHub", url: "https://github.com/deepesh67", icon: <FiGithub />, disabled: false },
+    ],
+  },
+  {
+    number: "03",
+    year: "2025",
+    badge: "Personal Project",
+    category: "Task Manager",
+    title: "TaskFlow",
+    description:
+      "A task management web app built with the MERN stack. Features JWT authentication for login/signup, and CRUD operations for managing tasks with a responsive UI.",
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT"],
+    image: "/images/taskflow.png",
+    links: [
+      { type: "GitHub", url: "https://github.com/deepesh67", icon: <FiGithub />, disabled: false },
+    ],
+  },
+  {
+    number: "04",
+    year: "2025",
+    badge: "Personal Project",
+    category: "Weather App",
+    title: "SkyLens",
+    description:
+      "A real-time weather dashboard with live API data. Includes AQI monitoring, °C/°F toggle, city search with geolocation, and a 2-year historical chart analysis.",
+    tech: ["React.js", "Tailwind CSS", "Open-Meteo API", "Recharts"],
+    image: "/images/skylens.png",
+    links: [
+      { type: "GitHub", url: "https://github.com/deepesh67", icon: <FiGithub />, disabled: false },
     ],
   },
 ];
 
 const STACK_OFFSETS = [
+  { y: -48, scale: 0.82, opacity: 0,    z: 0 }, // hidden back card
   { y: -32, scale: 0.88, opacity: 0.45, z: 1 }, // back card
   { y: -16, scale: 0.94, opacity: 0.7,  z: 2 }, // middle card
   { y: 0,   scale: 1,    opacity: 1,    z: 3 }, // front card (active)
@@ -93,20 +120,14 @@ const Work = () => {
     );
   }, []);
 
-  /* ── Get the visual stack order for a given active index ──
-     The 3 cards are displayed in this visual arrangement:
-       slot 0 = back
-       slot 1 = middle
-       slot 2 = front (active)
-     We map project indices to these slots cyclically.
-  */
+  /* ── Get the visual stack order for a given active index ── */
   const getSlot = useCallback(
     (projectIdx: number) => {
       const total = projects.length;
       // How far is this project from the active one?
       const diff = (projectIdx - activeIndex + total) % total;
-      // diff 0 → front (slot 2), diff 1 → middle (slot 1), diff 2 → back (slot 0)
-      return STACK_OFFSETS.length - 1 - (diff % STACK_OFFSETS.length);
+      // Map diff to slot index (front is highest slot index)
+      return Math.max(0, STACK_OFFSETS.length - 1 - diff);
     },
     [activeIndex]
   );
@@ -120,27 +141,33 @@ const Work = () => {
       `[data-idx="${activeIndex}"]`
     ) as HTMLElement;
 
-    // Animate front card sweeping away to the back of the stack
+    if (!frontCard) {
+      isAnimating.current = false;
+      return;
+    }
+
+    // Disable CSS transition temporarily so GSAP can animate smoothly
+    frontCard.style.transition = "none";
+
+    // Animate front card sweeping away to the right and fading out
     gsap.to(frontCard, {
       x: 60,
       opacity: 0,
       scale: 0.85,
-      duration: 0.45,
+      duration: 0.4,
       ease: "power2.in",
       onComplete: () => {
-        // Snap it back invisibly so React's state update can reposition it
-        gsap.set(frontCard, { x: 0, opacity: 0, scale: 0.88 });
+        // Clear GSAP inline styles so CSS can take over again
+        gsap.set(frontCard, { clearProps: "all" });
+        frontCard.style.transition = "";
+
+        // Advance active index, triggering a React re-render with new styles
         setActiveIndex((prev) => (prev + 1) % projects.length);
-        // Fade new layout in
-        gsap.to(deckRef.current!.querySelectorAll(".stack-card"), {
-          opacity: (_, el) => {
-            const slot = parseInt((el as HTMLElement).dataset.slot ?? "0");
-            return STACK_OFFSETS[slot]?.opacity ?? 1;
-          },
-          duration: 0.35,
-          ease: "power2.out",
-          onComplete: () => { isAnimating.current = false; },
-        });
+
+        // Wait for CSS transitions of the sliding cards to finish
+        setTimeout(() => {
+          isAnimating.current = false;
+        }, 550);
       },
     });
   };

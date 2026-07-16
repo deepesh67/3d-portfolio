@@ -43,7 +43,16 @@ const Landing = ({ children }: PropsWithChildren) => {
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el) {
+      // Use smoother if initialized, fallback to native scrollIntoView
+      import("./Navbar").then((module) => {
+        if (module.smoother) {
+          module.smoother.scrollTo(el, true, "top top");
+        } else {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    }
   };
 
   return (
@@ -59,11 +68,11 @@ const Landing = ({ children }: PropsWithChildren) => {
             <div className="landing-left landing-info">
               <div className="landing-intro">
                 {/* Greeting */}
-                <p className="greeting">Hi, I'm Khushi 👋</p>
+                <p className="greeting">Hi, I'm Deepesh 👋</p>
 
                 {/* Name */}
                 <h1 className="name">
-                  KHUSHI<br />JANGID
+                  DEEPESH<br />SHARMA
                 </h1>
               </div>
 
@@ -72,22 +81,21 @@ const Landing = ({ children }: PropsWithChildren) => {
 
               {/* Bio — resume-sourced, no invented content */}
               <p className="bio landing-h2-info">
-                Building scalable web applications using{" "}
+                Full Stack Developer (MERN) with hands-on experience in building scalable web applications using{" "}
                 <span className="bio-highlight">React.js</span>,{" "}
                 <span className="bio-highlight">Node.js</span>,{" "}
-                <span className="bio-highlight">Express.js</span>,{" "}
-                <span className="bio-highlight">MongoDB</span> and{" "}
-                <span className="bio-highlight">React Native</span>.
+                <span className="bio-highlight">Express.js</span>, and{" "}
+                <span className="bio-highlight">MongoDB</span>.
                 <br />
-                Currently building Enterprise GRC and Digital Lending platforms.
+                Skilled in REST API development, authentication (JWT), and responsive UI design.
                 <br />
-                <em>Open to Full-Time Software Engineering Opportunities.</em>
+                <em>Seeking an entry-level software developer role.</em>
               </p>
 
               {/* Availability indicator */}
               <div className="availability" aria-label="Currently available">
                 <span className="dot" aria-hidden="true"></span>
-                Open to Full-Time Roles
+                Open to Entry-Level Roles
               </div>
 
               {/* ── CTA Buttons ── */}
@@ -101,16 +109,16 @@ const Landing = ({ children }: PropsWithChildren) => {
                 </button>
 
                 <a
-                  href="/Khushi_Jangid_Resume.pdf"
-                  download="Khushi_Jangid_Resume.pdf"
+                  href="/Deepesh_Sharma_FS_Resume.pdf"
+                  download="Deepesh_Sharma_FS_Resume.pdf"
                   className="cta-secondary"
-                  aria-label="Download Khushi Jangid's Resume"
+                  aria-label="Download Deepesh Sharma's Resume"
                 >
                   <FiFileText /> Resume
                 </a>
 
                 <a
-                  href="https://github.com/khushijangid2004"
+                  href="https://github.com/deepesh67"
                   target="_blank"
                   rel="noreferrer"
                   className="cta-icon"
@@ -120,7 +128,7 @@ const Landing = ({ children }: PropsWithChildren) => {
                 </a>
 
                 <a
-                  href="https://www.linkedin.com/in/khushi-jangid-6682b6307/"
+                  href="https://www.linkedin.com/in/deepesh-sharma-29b83426a"
                   target="_blank"
                   rel="noreferrer"
                   className="cta-icon"
@@ -137,12 +145,12 @@ const Landing = ({ children }: PropsWithChildren) => {
             {/* ── Right: Stats (honest, resume-based) ── */}
             <div className="landing-right">
               <div className="stat-block">
-                <span className="stat-num">7</span>
-                <span className="stat-text">MONTHS<br />EXPERIENCE</span>
+                <span className="stat-num">MERN</span>
+                <span className="stat-text">STACK<br />TRAINEE</span>
               </div>
               <div className="stat-block">
-                <span className="stat-num">2</span>
-                <span className="stat-text">ENTERPRISE<br />PROJECTS</span>
+                <span className="stat-num">4</span>
+                <span className="stat-text">FULL-STACK<br />PROJECTS</span>
               </div>
               <div className="stat-block">
                 <span className="stat-num">5+</span>

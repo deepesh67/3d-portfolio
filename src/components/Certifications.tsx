@@ -7,14 +7,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const certs = [
   {
-    title: "Full Stack Development Intern",
-    issuer: "Regex Software",
-    details: "45 Days. Successfully completed Full Stack Development Internship and was awarded a certificate of completion.",
-  },
-  {
-    title: "C++ Object-Oriented Programming",
-    issuer: "SKIT College Summer Training Program",
-    details: "Completed summer training program focused on core C++ concepts, object-oriented programming, and data structures.",
+    title: "MERN Stack Training",
+    issuer: "Regex Software, Jaipur",
+    details: "Completion Certificate for intensive training program in full stack web development using the MERN stack.",
   }
 ];
 

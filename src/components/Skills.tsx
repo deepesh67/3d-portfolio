@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const skillCategories = [
   {
     title: "Frontend",
-    skills: ["React.js", "React Native", "JavaScript", "TypeScript", "HTML5", "CSS3"]
+    skills: ["HTML", "CSS", "JavaScript", "React.js", "Tailwind CSS"]
   },
   {
     title: "Backend",
@@ -16,14 +16,14 @@ const skillCategories = [
   },
   {
     title: "Database",
-    skills: ["MongoDB", "Supabase"]
+    skills: ["MongoDB", "MySQL"]
   },
   {
-    title: "Mobile Development",
-    skills: ["React Native", "Expo", "TypeScript"]
+    title: "Languages",
+    skills: ["JavaScript", "Python", "C/C++"]
   },
   {
-    title: "Developer Tools",
+    title: "Tools",
     skills: ["Git", "GitHub", "Postman", "VS Code"]
   }
 ];
@@ -112,7 +112,7 @@ const SkillCard = ({ title, skills, index }: { title: string; skills: string[]; 
             </g>
           </svg>
         );
-      case "mobile development":
+      case "languages":
         return (
           <svg viewBox="0 0 100 100" className="skill-3d-svg">
             <defs>
@@ -129,7 +129,7 @@ const SkillCard = ({ title, skills, index }: { title: string; skills: string[]; 
             </g>
           </svg>
         );
-      case "developer tools":
+      case "tools":
         return (
           <svg viewBox="0 0 100 100" className="skill-3d-svg">
             <defs>

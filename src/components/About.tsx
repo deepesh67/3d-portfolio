@@ -55,19 +55,15 @@ const About = () => {
         </h2>
         <div className="about-body">
           <p className="about-text about-animate">
-            I'm <strong>Khushi Jangid</strong>, a Full Stack Developer based in Jaipur, India, specializing in the
-            MERN stack — <strong>MongoDB, Express.js, React.js, and Node.js</strong>. I build production-grade
-            enterprise applications and cross-platform mobile apps using <strong>React Native</strong>.
+            I'm <strong>Deepesh Sharma</strong>, a Full Stack Developer based in Jaipur, India, specializing in the
+            MERN stack — <strong>MongoDB, Express.js, React.js, and Node.js</strong>. I build scalable web applications and responsive UIs with a focus on REST API development and authentication.
           </p>
           <p className="about-text about-animate">
-            Currently, I contribute to <strong>LawDocs</strong>, where I've built AI-assisted document review
-            workflows, integrated complex <strong>REST APIs</strong>, and developed authentication, onboarding, and KYC
-            flows for real-world users. I work across the full stack — from designing component libraries in React to
-            architecting <strong>Node.js</strong> + <strong>MongoDB</strong> backends.
+            Recently, I completed an intensive training program at <strong>Regex Software</strong>, where I gained hands-on experience building full-stack applications. I enjoy creating dynamic user experiences and architecting reliable backends.
           </p>
           <p className="about-text about-animate">
             I care deeply about code quality, developer experience, and shipping products that work well for users.
-            I'm looking for <em>full-time software engineering roles</em> where I can contribute to impactful products
+            I'm looking for an <em>entry-level software developer role</em> where I can contribute to impactful products
             and grow alongside a strong engineering team.
           </p>
         </div>

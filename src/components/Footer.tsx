@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="footer-section">
       <div className="footer-container">
         <div className="footer-copyright">
-          &copy; {new Date().getFullYear()} Khushi Jangid
+          &copy; {new Date().getFullYear()} Deepesh Sharma
         </div>
       </div>
     </footer>
