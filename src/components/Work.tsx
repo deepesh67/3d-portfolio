@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FiGithub, FiExternalLink, FiLock, FiArrowRight } from "react-icons/fi";
-import "./styles/Work.css";
+import { FiGithub, FiArrowRight } from "react-icons/fi";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -66,18 +65,18 @@ const projects = [
 ];
 
 const STACK_OFFSETS = [
-  { y: -48, scale: 0.82, opacity: 0,    z: 0 }, // hidden back card
+  { y: -48, scale: 0.82, opacity: 0, z: 0 }, // hidden back card
   { y: -32, scale: 0.88, opacity: 0.45, z: 1 }, // back card
-  { y: -16, scale: 0.94, opacity: 0.7,  z: 2 }, // middle card
-  { y: 0,   scale: 1,    opacity: 1,    z: 3 }, // front card (active)
+  { y: -16, scale: 0.94, opacity: 0.7, z: 2 }, // middle card
+  { y: 0, scale: 1, opacity: 1, z: 3 }, // front card (active)
 ];
 
 const Work = () => {
-  const sectionRef   = useRef<HTMLDivElement>(null);
-  const deckRef      = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const deckRef = useRef<HTMLDivElement>(null);
   // activeIndex = index in `projects` that is currently the FRONT card
   const [activeIndex, setActiveIndex] = useState(0);
-  const isAnimating  = useRef(false);
+  const isAnimating = useRef(false);
 
   /* ── Scroll entrance ── */
   useEffect(() => {
@@ -204,7 +203,7 @@ const Work = () => {
         {/* ── Full-width stacked card deck ── */}
         <div className="work-deck-wrapper" ref={deckRef}>
           {projects.map((project, idx) => {
-            const slot   = getSlot(idx);
+            const slot = getSlot(idx);
             const offset = STACK_OFFSETS[slot];
 
             return (
