@@ -29,34 +29,7 @@ const skillCategories = [
 ];
 
 const SkillCard = ({ title, skills, index }: { title: string; skills: string[]; index: number }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const card = cardRef.current;
-    if (!card) return;
-
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    // Smooth tilt angles
-    const rotateX = ((centerY - y) / centerY) * 12;
-    const rotateY = ((x - centerX) / centerX) * 12;
-
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-  };
-
-  const handleMouseLeave = () => {
-    const card = cardRef.current;
-    if (!card) return;
-    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-  };
-
   const getIcon = (category: string) => {
-    const glowId = `glow-${index}`;
     const gradId = `grad-${index}`;
     
     switch (category.toLowerCase()) {
@@ -69,13 +42,9 @@ const SkillCard = ({ title, skills, index }: { title: string; skills: string[]; 
                 <stop offset="60%" stopColor="#d9a016" />
                 <stop offset="100%" stopColor="#5c4106" />
               </radialGradient>
-              <filter id={glowId} x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="4" result="blur" />
-                <feComposite in="SourceGraphic" in2="blur" operator="over" />
-              </filter>
             </defs>
-            <circle cx="50" cy="50" r="28" fill={`url(#${gradId})`} filter={`url(#${glowId})`} />
-            <ellipse cx="50" cy="36" rx="14" ry="4" fill="rgba(255, 255, 255, 0.45)" filter="blur(1px)" />
+            <circle cx="50" cy="50" r="28" fill={`url(#${gradId})`} />
+            <ellipse cx="50" cy="36" rx="14" ry="4" fill="rgba(255, 255, 255, 0.45)" />
           </svg>
         );
       case "backend":
@@ -175,22 +144,13 @@ const SkillCard = ({ title, skills, index }: { title: string; skills: string[]; 
   };
 
   return (
-    <div className="skills-card-wrapper floating-card" style={{ animationDelay: `${index * 0.6}s` }}>
-      <div 
-        ref={cardRef}
-        className="skill-category" 
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-      >
-        <div className="skill-3d-wrapper">
-          {getIcon(title)}
-        </div>
-        <h3 className="skill-category-title">{title}</h3>
-        <div className="skill-tags">
-          {skills.map((skill, i) => (
-            <span key={i} className="skill-tag">{skill}</span>
-          ))}
-        </div>
+    <div className="skill-card">
+      <div className="skill-icon-wrapper">
+        {getIcon(title)}
+      </div>
+      <div className="skill-content">
+        <h3 className="skill-title">{title}</h3>
+        <p className="skill-subtitle">{skills.join(" • ")}</p>
       </div>
     </div>
   );
@@ -201,40 +161,42 @@ const Skills = () => {
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    const elements = sectionRef.current.querySelectorAll(".skills-card-wrapper");
+    
     gsap.fromTo(
-      elements,
-      { opacity: 0, y: 50 },
+      sectionRef.current.querySelector(".marquee-wrapper"),
+      { opacity: 0, y: 40 },
       {
         opacity: 1,
         y: 0,
-        stagger: 0.15,
-        duration: 0.8,
+        duration: 1.2,
         ease: "power2.out",
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 80%",
+          start: "top 85%",
         },
       }
     );
   }, []);
+
+  // Duplicate cards for seamless infinite scroll
+  // We double it to ensure the track can scroll exactly 50% and look continuous
+  const allCards = [...skillCategories, ...skillCategories, ...skillCategories, ...skillCategories];
 
   return (
     <section className="skills-section section-container" id="skills" ref={sectionRef}>
       <div className="skills-container">
         <h2 className="section-title">TECHNICAL SKILLS</h2>
 
-        <div className="skills-masonry">
-          <div className="skills-column col-1">
-            <SkillCard {...skillCategories[0]} index={0} /> {/* Frontend */}
-            <SkillCard {...skillCategories[2]} index={2} /> {/* Database */}
-          </div>
-          <div className="skills-column col-2">
-            <SkillCard {...skillCategories[1]} index={1} /> {/* Backend */}
-            <SkillCard {...skillCategories[3]} index={3} /> {/* Mobile Development */}
-          </div>
-          <div className="skills-column col-3">
-            <SkillCard {...skillCategories[4]} index={4} /> {/* Developer Tools */}
+        <div className="marquee-wrapper">
+          <div className="marquee-track">
+            {allCards.map((category, idx) => (
+              <SkillCard 
+                key={idx} 
+                title={category.title} 
+                skills={category.skills} 
+                index={idx % skillCategories.length} 
+              />
+            ))}
           </div>
         </div>
       </div>

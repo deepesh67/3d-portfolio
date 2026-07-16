@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
+import { MdEmail, MdLocationOn } from "react-icons/md";
 import { FiLinkedin, FiGithub } from "react-icons/fi";
 import "./styles/Contact.css";
 
@@ -62,13 +62,6 @@ const Contact = () => {
             <a href="mailto:Deepesh4938@gmail.com">Deepesh4938@gmail.com</a>
           </div>
           
-          <div className="contact-item">
-            <div className="contact-icon">
-              <MdPhone />
-            </div>
-            <a href="tel:9928695410">+91 99286 95410</a>
-          </div>
-
           <div className="contact-item">
             <div className="contact-icon">
               <FiGithub />

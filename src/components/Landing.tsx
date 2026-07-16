@@ -171,25 +171,27 @@ const Landing = ({ children }: PropsWithChildren) => {
                   <FiFileText /> Resume
                 </a>
 
-                <a
-                  href="https://github.com/deepesh67"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="cta-icon"
-                  aria-label="GitHub profile"
-                >
-                  <FiGithub />
-                </a>
+                <div className="social-icons" style={{ display: 'flex', gap: '0.85rem' }}>
+                  <a
+                    href="https://github.com/deepesh67"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="cta-icon"
+                    aria-label="GitHub profile"
+                  >
+                    <FiGithub />
+                  </a>
 
-                <a
-                  href="https://www.linkedin.com/in/deepesh-sharma-29b83426a"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="cta-icon"
-                  aria-label="LinkedIn profile"
-                >
-                  <FiLinkedin />
-                </a>
+                  <a
+                    href="https://www.linkedin.com/in/deepesh-sharma-29b83426a"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="cta-icon"
+                    aria-label="LinkedIn profile"
+                  >
+                    <FiLinkedin />
+                  </a>
+                </div>
               </div>
             </div>
 

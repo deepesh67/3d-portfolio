@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FiGithub, FiArrowRight } from "react-icons/fi";
+import { FiGithub, FiArrowRight, FiExternalLink } from "react-icons/fi";
 import "./styles/Work.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -19,6 +19,7 @@ const projects = [
     image: "/images/hr-system.png",
     links: [
       { type: "GitHub", url: "https://github.com/deepesh67", icon: <FiGithub />, disabled: false },
+      { type: "Live Demo", url: "https://hr-management-system-nine-amber.vercel.app/", icon: <FiExternalLink />, disabled: false },
     ],
   },
   {
@@ -33,6 +34,7 @@ const projects = [
     image: "/images/form-builder.png",
     links: [
       { type: "GitHub", url: "https://github.com/deepesh67", icon: <FiGithub />, disabled: false },
+      { type: "Live Demo", url: "https://form-builder-m59xiy02f-deepesh67s-projects.vercel.app", icon: <FiExternalLink />, disabled: false },
     ],
   },
   {
@@ -44,7 +46,7 @@ const projects = [
     description:
       "A task management web app built with the MERN stack. Features JWT authentication for login/signup, and CRUD operations for managing tasks with a responsive UI.",
     tech: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT"],
-    image: "/images/taskflow.png",
+    image: "/images/taskflow.jpg",
     links: [
       { type: "GitHub", url: "https://github.com/deepesh67", icon: <FiGithub />, disabled: false },
     ],
@@ -61,6 +63,7 @@ const projects = [
     image: "/images/skylens.png",
     links: [
       { type: "GitHub", url: "https://github.com/deepesh67", icon: <FiGithub />, disabled: false },
+      { type: "Live Demo", url: "https://weather-dashboard-ejqqv3ayl-deepesh67s-projects.vercel.app", icon: <FiExternalLink />, disabled: false },
     ],
   },
 ];

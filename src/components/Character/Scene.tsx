@@ -32,11 +32,7 @@ const Scene = () => {
           ref={imageRef}
           src="/images/profile.png?v=2" 
           alt="Profile" 
-          width="1000"
-          height="1000"
-          loading="lazy"
-          decoding="async"
-          style={{ width: "100%", height: "100%", objectFit: "contain", aspectRatio: "1 / 1" }}
+          style={{ width: "100%", height: "100%", objectFit: "contain" }}
           onLoad={() => {
             const progress = setProgress((value) => setLoading(value));
             progress.loaded();

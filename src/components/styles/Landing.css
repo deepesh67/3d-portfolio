@@ -316,18 +316,15 @@
 /* ── Mobile ── */
 @media screen and (max-width: 768px) {
   .landing-section {
-    height: auto;
-    min-height: var(--vh);
-    padding-bottom: 2rem;
-    overflow: visible;
+    /* Retain original Hero height logic */
   }
 
   .landing-content {
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 120px;
-    padding-bottom: 40px; 
-    gap: 2rem;
+    padding-bottom: 280px; /* Fixed pixel value instead of vh */
+    gap: 0;
   }
 
   .landing-left {
@@ -353,57 +350,50 @@
     max-width: 100%;
   }
 
-  /* 2. Stats Position: Normal document flow below the avatar */
+  /* 2. Stats Position: Vertically stacked on the left, smaller size */
   .landing-right {
     display: flex;
-    position: static;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem; 
-    z-index: 20; 
-    width: 100%;
-    padding: 0 1rem;
-  }
-  
-  .stat-block {
-    flex: 1 1 30%;
-    justify-content: center;
-    text-align: center;
+    position: absolute;
+    bottom: 2vh; /* Moved much lower to prevent overlap with buttons */
+    left: 1rem;
+    width: auto;
     flex-direction: column;
-    gap: 0.25rem;
+    justify-content: center;
+    padding: 0;
+    gap: 1.2rem;
+    z-index: 20; 
   }
-  
+  .stat-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.1rem;
+  }
   .stat-num {
-    font-size: 1.8rem;
+    font-size: 2.2rem; /* Thoda chota kiya gaya */
+    line-height: 1;
   }
-  
   .stat-text {
-    font-size: 0.7rem;
-    text-align: center;
+    font-size: 0.65rem;
+    text-align: left;
+    line-height: 1.2;
   }
 
-  /* 1. Avatar Position: Normal document flow */
+  /* 1. Avatar Position: Absolute bottom aligned */
   .character-container {
-    position: relative !important;
     top: auto !important;
-    bottom: auto !important;
-    left: auto !important;
-    transform: none !important;
-    width: 100% !important;
-    height: auto !important;
-    min-height: 40vh !important;
-    aspect-ratio: 1 / 1 !important;
-    margin: 1rem 0 !important;
+    bottom: -100px !important; /* Moved further down */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    height: 55vh !important;
   }
 
-  /* 5. CTA Buttons: Exactly like desktop */
+  /* 5. CTA Buttons: Allow wrapping but keep social icons together */
   .hero-ctas {
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
     gap: 0.85rem;
+    flex-wrap: wrap; /* allow wrapping on small screens */
   }
 
   .cta-primary,

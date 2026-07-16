@@ -1,4 +1,5 @@
 import { PropsWithChildren, useEffect } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Landing from "./Landing";
 import Navbar from "./Navbar";
 import About from "./About";
@@ -8,6 +9,7 @@ import Skills from "./Skills";
 import Certifications from "./Certifications";
 import Contact from "./Contact";
 import Footer from "./Footer";
+import ParticlesBackground from "./ParticlesBackground";
 import setSplitText from "./utils/splitText";
 
 const MainContainer = ({ children }: PropsWithChildren) => {
@@ -17,10 +19,15 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         setSplitText();
-      }, 200);
+        ScrollTrigger.refresh();
+      }, 500);
     };
     
-    setSplitText();
+    // Initial call
+    setTimeout(() => {
+      setSplitText();
+      ScrollTrigger.refresh();
+    }, 500);
     window.addEventListener("resize", resizeHandler);
     return () => {
       window.removeEventListener("resize", resizeHandler);
@@ -30,6 +37,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
 
   return (
     <div className="container-main">
+      <ParticlesBackground />
       <Navbar />
       
       <div id="smooth-wrapper">

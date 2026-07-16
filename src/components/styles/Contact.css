@@ -2,9 +2,7 @@
 .contact-section {
   width: 100%;
   padding: 6rem 0 4rem 0;
-  background-color: var(--backgroundColor);
   position: relative;
-  overflow: hidden;
 }
 
 /* Gradient top divider */
@@ -170,7 +168,7 @@
   }
 
   .freelance-btn {
-    width: 100%;
+    width: max-content;
     justify-content: center;
     text-align: center;
   }

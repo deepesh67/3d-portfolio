@@ -1,8 +1,7 @@
 /* ── Certifications Section ── */
 .cert-section {
   width: 100%;
-  padding: 5rem 0 4rem 0;
-  background-color: var(--backgroundColor);
+  padding: 6rem 0;
   position: relative;
 }
 
