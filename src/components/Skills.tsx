@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const skillCategories = [
   {
     title: "Frontend",
-    skills: ["HTML", "CSS", "JavaScript", "React.js", "Tailwind CSS"]
+    skills: ["HTML5", "CSS3", "JavaScript", "React.js", "Tailwind CSS"]
   },
   {
     title: "Backend",
