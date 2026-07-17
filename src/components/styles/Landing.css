@@ -316,84 +316,101 @@
 /* ── Mobile ── */
 @media screen and (max-width: 768px) {
   .landing-section {
-    /* Retain original Hero height logic */
+    height: auto;
+    min-height: 100dvh;
+    padding-top: 100px;
+    padding-bottom: 60px;
+    overflow: visible; /* Prevent cut-off */
+  }
+
+  .landing-container {
+    height: auto;
   }
 
   .landing-content {
     flex-direction: column;
     justify-content: flex-start;
-    padding-top: 120px;
-    padding-bottom: 280px; /* Fixed pixel value instead of vh */
-    gap: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    gap: 2rem;
   }
 
   .landing-left {
-    padding: 0 1rem 1rem 1rem;
+    padding: 0 1rem;
     width: 100%;
+    z-index: 10;
   }
 
   .name {
-    font-size: 3rem;
+    font-size: 3.5rem;
     letter-spacing: -1px;
   }
 
   .greeting {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   .role {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
   }
 
   .bio {
-    font-size: 0.88rem;
+    font-size: 0.95rem;
     max-width: 100%;
   }
 
-  /* 2. Stats Position: Vertically stacked on the left, smaller size */
+  /* Fix Avatar Position: Normal flex document flow */
+  .character-container {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: 400px !important; /* Give it space to render */
+    margin: 1rem 0 !important;
+    z-index: 5 !important;
+  }
+
+  /* Stats Position: Stacked below the image */
   .landing-right {
     display: flex;
-    position: absolute;
-    bottom: 2vh; /* Moved much lower to prevent overlap with buttons */
-    left: 1rem;
-    width: auto;
-    flex-direction: column;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    padding: 0;
-    gap: 1.2rem;
+    padding: 0 1rem;
+    gap: 2rem;
     z-index: 20; 
   }
+
   .stat-block {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.1rem;
+    align-items: center;
+    gap: 0.25rem;
   }
+
   .stat-num {
-    font-size: 2.2rem; /* Thoda chota kiya gaya */
+    font-size: 3rem;
     line-height: 1;
   }
+
   .stat-text {
-    font-size: 0.65rem;
-    text-align: left;
+    font-size: 0.75rem;
+    text-align: center;
     line-height: 1.2;
   }
 
-  /* 1. Avatar Position: Absolute bottom aligned */
-  .character-container {
-    top: auto !important;
-    bottom: -100px !important; /* Moved further down */
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    height: 55vh !important;
-  }
-
-  /* 5. CTA Buttons: Allow wrapping but keep social icons together */
+  /* CTA Buttons: Allow wrapping but keep social icons together */
   .hero-ctas {
     flex-direction: row;
     align-items: center;
     gap: 0.85rem;
-    flex-wrap: wrap; /* allow wrapping on small screens */
+    flex-wrap: wrap; 
   }
 
   .cta-primary,
@@ -402,4 +419,4 @@
     width: auto;
     justify-content: center;
   }
-}
+}
