@@ -50,8 +50,8 @@ const About = () => {
       <div className="about-inner">
         <div className="about-label about-animate">About</div>
         <h2 className="about-heading about-animate">
-          Turning ideas into<br />
-          <span className="about-heading-accent">scalable products.</span>
+          A bit about <br />
+          <span className="about-heading-accent">Who I Am.</span>
         </h2>
         <div className="about-body">
           <p className="about-text about-animate">
