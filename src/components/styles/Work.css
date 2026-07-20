@@ -152,8 +152,10 @@
   position: absolute;
   inset: 0;
   border-radius: var(--radius-card);
-  border: 1px solid var(--border-subtle);
-  background: #111214;
+  background: rgba(17, 18, 20, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
   transition:
     transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
@@ -315,7 +317,7 @@
   height: 100%;
   object-fit: contain;
   object-position: center;
-  background-color: #111214;
+  background-color: transparent;
   transition: transform 0.7s ease;
   display: block;
 }
@@ -330,8 +332,8 @@
   inset: 0;
   background: linear-gradient(
     to right,
-    #111214 0%,
-    transparent 30%,
+    rgba(17, 18, 20, 0.85) 0%,
+    transparent 40%,
     transparent 100%
   );
   pointer-events: none;
@@ -339,7 +341,7 @@
 
 /* Fallback if no image — dark gradient placeholder */
 .stack-image:not(:has(img[src])) {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.4) 0%, rgba(22, 33, 62, 0.4) 50%, rgba(15, 52, 96, 0.4) 100%);
 }
 
 /* ── Responsive ── */

@@ -24,10 +24,11 @@
 }
 
 .nav-logo img {
-  height: 50px;
+  height: 40px;
   width: auto;
   object-fit: contain;
-  transform: scale(2.8);
+  /* Convert white/any color to black, then apply sepia and hue to get #d9a016 */
+  filter: brightness(0) invert(63%) sepia(80%) saturate(543%) hue-rotate(6deg) brightness(96%) contrast(92%);
   transform-origin: center;
 }
 
@@ -256,9 +257,5 @@
 
   .mobile-menu {
     display: flex;
-  }
-  
-  .nav-logo img {
-    transform: scale(2.2);
   }
 }

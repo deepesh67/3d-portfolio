@@ -1,5 +1,22 @@
 import React, { useEffect, useRef } from 'react';
 
+const skillsList = [
+  { name: "HTML5", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" },
+  { name: "CSS3", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" },
+  { name: "JavaScript", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
+  { name: "React", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
+  { name: "Tailwind", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
+  { name: "Node.js", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" },
+  { name: "MongoDB", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" },
+  { name: "MySQL", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" },
+  { name: "Python", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
+  { name: "C++", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" },
+  { name: "Git", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" },
+  { name: "GitHub", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" },
+  { name: "Postman", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg" },
+  { name: "VS Code", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" }
+];
+
 const ParticlesBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -10,8 +27,17 @@ const ParticlesBackground: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let particlesArray: Particle[] = [];
+    let skillParticles: SkillParticle[] = [];
+    let starParticles: StarParticle[] = [];
     let animationFrameId: number;
+
+    // Preload images
+    const loadedImages: { [key: string]: HTMLImageElement } = {};
+    skillsList.forEach(skill => {
+      const img = new Image();
+      img.src = skill.url;
+      loadedImages[skill.name] = img;
+    });
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -21,78 +47,143 @@ const ParticlesBackground: React.FC = () => {
 
     window.addEventListener('resize', resizeCanvas);
 
-    class Particle {
+    // Tiny stars for background depth
+    class StarParticle {
       x: number;
       y: number;
       size: number;
-      speedX: number;
-      speedY: number;
       opacity: number;
       opacitySpeed: number;
 
       constructor() {
-        if (!canvas) {
-          this.x = 0; this.y = 0; this.size = 0; this.speedX = 0; this.speedY = 0; this.opacity = 0; this.opacitySpeed = 0;
-          return;
-        }
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 1.5 + 0.2; // Tiny stars
-        
-        // Slow drift upwards and diagonally
-        this.speedX = (Math.random() * 0.3) - 0.15;
-        this.speedY = (Math.random() * -0.3) - 0.1; 
-        
+        this.x = Math.random() * (canvas?.width || window.innerWidth);
+        this.y = Math.random() * (canvas?.height || window.innerHeight);
+        this.size = Math.random() * 1.2 + 0.1;
         this.opacity = Math.random();
-        this.opacitySpeed = (Math.random() * 0.02) - 0.01; // Twinkling effect
+        this.opacitySpeed = (Math.random() * 0.01) - 0.005;
       }
 
       draw() {
         if (!ctx) return;
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-        
-        // Glowing star effect
-        ctx.shadowBlur = 6;
-        ctx.shadowColor = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-        
         ctx.fill();
-        
-        // Reset shadow to avoid affecting other draws unintentionally, though we only draw stars
-        ctx.shadowBlur = 0;
       }
 
       update() {
-        if (!canvas) return;
-
-        // Twinkling logic
         this.opacity += this.opacitySpeed;
-        if (this.opacity >= 1 || this.opacity <= 0.1) {
+        if (this.opacity >= 0.8 || this.opacity <= 0.05) {
           this.opacitySpeed = -this.opacitySpeed;
         }
+        this.draw();
+      }
+    }
 
-        // Movement logic
-        this.x += this.speedX;
+    // Elegant, sparse floating skill logos
+    class SkillParticle {
+      x: number;
+      y: number;
+      size: number;
+      speedY: number;
+      speedX: number;
+      opacity: number;
+      fadeState: 'in' | 'out';
+      skill: { name: string, url: string };
+      maxOpacity: number;
+      rotation: number;
+      rotationSpeed: number;
+
+      constructor() {
+        this.initParticle();
+        // Randomize initial opacity so they don't all fade in at once
+        this.opacity = Math.random() * 0.4;
+        this.fadeState = Math.random() > 0.5 ? 'in' : 'out';
+      }
+
+      initParticle() {
+        const w = canvas?.width || window.innerWidth;
+        const h = canvas?.height || window.innerHeight;
+        this.x = Math.random() * (w - 100) + 50; 
+        this.y = Math.random() * (h - 100) + 50;
+        
+        // Size of logos increased to make them more prominent while maintaining fewer count
+        this.size = w < 768 ? 40 : 65; 
+        
+        // Very slow drift
+        this.speedY = (Math.random() * -0.2) - 0.1; 
+        this.speedX = (Math.random() * 0.2) - 0.1;
+
+        // Slight rotation for natural floating feel
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotationSpeed = (Math.random() * 0.01) - 0.005;
+
+        this.opacity = 0;
+        this.fadeState = 'in';
+        this.maxOpacity = Math.random() * 0.4 + 0.45; // 45-85% opacity max
+        
+        this.skill = skillsList[Math.floor(Math.random() * skillsList.length)];
+      }
+
+      draw() {
+        if (!ctx) return;
+        const img = loadedImages[this.skill.name];
+        
+        if (img && img.complete) {
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate(this.rotation);
+          
+          ctx.globalAlpha = this.opacity;
+          
+          // Subtle glow behind the logo
+          ctx.shadowBlur = 20;
+          ctx.shadowColor = `rgba(255, 255, 255, ${this.opacity * 0.5})`;
+          
+          // Draw image centered at current coordinates
+          ctx.drawImage(img, -this.size / 2, -this.size / 2, this.size, this.size);
+          
+          ctx.restore();
+        }
+      }
+
+      update() {
+        // Slow vertical and horizontal drift
         this.y += this.speedY;
+        this.x += this.speedX;
+        this.rotation += this.rotationSpeed;
 
-        // Wrap around the screen to keep it infinite
-        if (this.x < 0) this.x = canvas.width;
-        if (this.x > canvas.width) this.x = 0;
-        if (this.y < 0) this.y = canvas.height;
-        if (this.y > canvas.height) this.y = 0;
+        // Elegant fade in and fade out
+        if (this.fadeState === 'in') {
+          this.opacity += 0.002; 
+          if (this.opacity >= this.maxOpacity) {
+            this.fadeState = 'out';
+          }
+        } else {
+          this.opacity -= 0.002;
+          if (this.opacity <= 0) {
+            this.initParticle(); 
+          }
+        }
 
         this.draw();
       }
     }
 
     const init = () => {
-      particlesArray = [];
-      // Adjust density based on screen size, stars usually need higher density than networks
-      const numberOfParticles = Math.floor((canvas.width * canvas.height) / 4000);
+      skillParticles = [];
+      starParticles = [];
       
-      for (let i = 0; i < numberOfParticles; i++) {
-        particlesArray.push(new Particle());
+      const isMobile = window.innerWidth < 768;
+      const skillCount = isMobile ? 2 : 3; // Significantly reduced to maintain large gaps
+      
+      for (let i = 0; i < skillCount; i++) {
+        skillParticles.push(new SkillParticle());
+      }
+
+      const starCount = isMobile ? 25 : 50;
+      for (let i = 0; i < starCount; i++) {
+        starParticles.push(new StarParticle());
       }
     };
 
@@ -100,17 +191,22 @@ const ParticlesBackground: React.FC = () => {
       if (!ctx || !canvas) return;
       animationFrameId = requestAnimationFrame(animate);
       
-      // Slightly clear the canvas to create a faint trailing effect (shooting star feel for faster ones)
-      // or just clear completely for clean stars
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update();
+      for (let i = 0; i < starParticles.length; i++) {
+        starParticles[i].update();
+      }
+      
+      for (let i = 0; i < skillParticles.length; i++) {
+        skillParticles[i].update();
       }
     };
 
-    resizeCanvas();
-    animate();
+    // Give images a tiny bit of time to start loading before init
+    setTimeout(() => {
+      resizeCanvas();
+      animate();
+    }, 100);
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);

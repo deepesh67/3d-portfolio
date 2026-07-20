@@ -183,3 +183,50 @@ body {
     font-size: 40px;
   }
 }
+
+/* ── Character Aura Glow ── */
+.profile-glow {
+  filter: drop-shadow(0 0 15px rgba(217, 160, 22, 0.4));
+  animation: pulse-glow 3s infinite alternate ease-in-out;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes pulse-glow {
+  0% { filter: drop-shadow(0 0 10px rgba(217, 160, 22, 0.3)); }
+  100% { filter: drop-shadow(0 0 35px rgba(217, 160, 22, 0.8)); }
+}
+
+.aura-blob {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(217, 160, 22, 0.15) 0%, transparent 60%);
+  border-radius: 50%;
+  z-index: 1;
+  filter: blur(25px);
+  animation: float-blob 6s infinite alternate ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes float-blob {
+  0% { transform: scale(0.9) translate(0, 0); opacity: 0.5; }
+  50% { transform: scale(1.1) translate(20px, -20px); opacity: 0.8; }
+  100% { transform: scale(1) translate(-20px, 20px); opacity: 1; }
+}
+
+/* ── Matrix / Hacker Mode Easter Egg ── */
+body.matrix-mode {
+  --accent-primary: #00ff41;          
+  --accent-bright: #00ff41;          
+  --accent-muted: #008f11;          
+  --accent-dim: rgba(0, 255, 65, 0.12); 
+  --accent-glow: rgba(0, 255, 65, 0.4); 
+  --border-accent: rgba(0, 255, 65, 0.3);
+  
+  font-family: 'Courier New', Courier, monospace !important;
+}
+
+body.matrix-mode * {
+  font-family: 'Courier New', Courier, monospace !important;
+}

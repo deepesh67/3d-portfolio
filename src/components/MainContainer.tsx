@@ -23,14 +23,32 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       }, 500);
     };
     
+    // Easter Egg: Type "mern"
+    let keys = "";
+    const easterEggHandler = (e: KeyboardEvent) => {
+      keys += e.key.toLowerCase();
+      if (keys.length > 4) {
+        keys = keys.slice(1);
+      }
+      if (keys === "mern") {
+        document.body.classList.add("matrix-mode");
+        // Remove it after 15 seconds
+        setTimeout(() => {
+          document.body.classList.remove("matrix-mode");
+        }, 15000); 
+      }
+    };
+
     // Initial call
     setTimeout(() => {
       setSplitText();
       ScrollTrigger.refresh();
     }, 500);
     window.addEventListener("resize", resizeHandler);
+    window.addEventListener("keydown", easterEggHandler);
     return () => {
       window.removeEventListener("resize", resizeHandler);
+      window.removeEventListener("keydown", easterEggHandler);
       clearTimeout(timeoutId);
     };
   }, []);

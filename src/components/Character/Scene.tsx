@@ -28,10 +28,12 @@ const Scene = () => {
   return (
     <>
       <div className="character-container" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%", position: "relative", zIndex: 10 }}>
+        <div className="aura-blob" />
         <img 
           ref={imageRef}
           src="/images/profile.png?v=2" 
           alt="Profile" 
+          className="profile-glow"
           style={{ width: "100%", height: "100%", objectFit: "contain" }}
           onLoad={() => {
             const progress = setProgress((value) => setLoading(value));

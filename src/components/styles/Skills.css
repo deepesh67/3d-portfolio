@@ -77,8 +77,10 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  background: linear-gradient(135deg, rgba(20, 20, 20, 0.6) 0%, rgba(5, 5, 5, 0.8) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(17, 18, 20, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 1.5rem 2rem;
   border-radius: 20px;
   min-width: 380px;
@@ -88,7 +90,7 @@
 }
 
 .skill-card:hover {
-  background: linear-gradient(135deg, rgba(30, 30, 30, 0.7) 0%, rgba(10, 10, 10, 0.9) 100%);
+  background: rgba(30, 30, 30, 0.6);
   border-color: rgba(217, 160, 22, 0.4);
   box-shadow: 0 15px 40px rgba(217, 160, 22, 0.1);
   transform: translateY(-5px);
