@@ -82,17 +82,17 @@ const ParticlesBackground: React.FC = () => {
 
     // Elegant, sparse floating skill logos
     class SkillParticle {
-      x: number;
-      y: number;
-      size: number;
-      speedY: number;
-      speedX: number;
-      opacity: number;
-      fadeState: 'in' | 'out';
-      skill: { name: string, url: string };
-      maxOpacity: number;
-      rotation: number;
-      rotationSpeed: number;
+      x!: number;
+      y!: number;
+      size!: number;
+      speedY!: number;
+      speedX!: number;
+      opacity!: number;
+      fadeState!: 'in' | 'out';
+      skill!: { name: string, url: string };
+      maxOpacity!: number;
+      rotation!: number;
+      rotationSpeed!: number;
 
       constructor() {
         this.initParticle();
